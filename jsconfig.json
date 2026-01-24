@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "jsx": "react-jsx",
+        "lib": [
+            "ESNext",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "baseUrl": ".",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "resolveJsonModule": true,
+        "types": [
+            "node",
+            "vite/client"
+        ],
+        "allowJs": true,
+        "checkJs": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "noImplicitReturns": false,
+        "noEmit": true,
+        "noEmitOnError": true,
+        "allowSyntheticDefaultImports": true,
+        "verbatimModuleSyntax": true,
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules"
+            }
+        ]
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "dist",
+        "build",
+        "release",
+        "node_modules"
+    ]
+}
