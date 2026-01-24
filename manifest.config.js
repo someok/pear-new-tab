@@ -12,6 +12,7 @@ export default defineManifest({
     permissions: [
         'sidePanel',
         'contentSettings',
+        'storage',
     ],
     action: {
         default_icon: {

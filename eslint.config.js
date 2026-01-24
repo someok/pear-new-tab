@@ -44,6 +44,11 @@ const config = antfu(
         },
     },
     {
+        languageOptions: {
+            globals: {
+                chrome: 'readonly',
+            },
+        },
         plugins: {
             tailwindcss,
         },
