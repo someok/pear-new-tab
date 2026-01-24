@@ -13,12 +13,12 @@
 @theme {
     /* --spacing 默认值为 0.25rem，约为 4px */
     /* Ant Design 默认字体配置 */
-    --default-font-family: var(--mos-font-family);
-    --color-primary: var(--mos-color-primary);
-    --color-success: var(--mos-color-success);
-    --color-warning: var(--mos-color-warning);
-    --color-error: var(--mos-color-error);
-    --color-info: var(--mos-color-info);
+    --default-font-family: var(--ant-font-family);
+    --color-primary: var(--ant-color-primary);
+    --color-success: var(--ant-color-success);
+    --color-warning: var(--ant-color-warning);
+    --color-error: var(--ant-color-error);
+    --color-info: var(--ant-color-info);
 
     /*--color-demo: light-dark(red, blue);*/
 }
@@ -29,12 +29,12 @@
  */
 /*noinspection ALL*/
 * {
-    --default-font-family: var(--mos-font-family);
-    --color-primary: var(--mos-color-primary);
-    --color-success: var(--mos-color-success);
-    --color-warning: var(--mos-color-warning);
-    --color-error: var(--mos-color-error);
-    --color-info: var(--mos-color-info);
+    --default-font-family: var(--ant-font-family);
+    --color-primary: var(--ant-color-primary);
+    --color-success: var(--ant-color-success);
+    --color-warning: var(--ant-color-warning);
+    --color-error: var(--ant-color-error);
+    --color-info: var(--ant-color-info);
 }
 
 body {
