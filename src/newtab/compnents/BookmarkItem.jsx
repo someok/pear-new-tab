@@ -26,7 +26,7 @@ function BookmarkItem(props) {
             gap={8}
             className="group/item w-full overflow-hidden p-2 pl-0 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
-            <Flex justify="center" align="center" className="h-12 w-12">
+            <Flex justify="center" align="center" className="h-8 w-8">
                 <BookmarkIcon
                     src={faviconURL(props.url)}
                     fallback={(
