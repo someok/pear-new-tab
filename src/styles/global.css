@@ -46,3 +46,20 @@ body * {
     box-sizing: border-box;
     scrollbar-width: thin;
 }
+/*
+
+*::-webkit-scrollbar {
+    background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #a3a4a430;
+    border: 6px solid transparent;
+    background-clip: content-box;
+    border-radius: 10px;
+}
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+    margin-top: 2px;
+}
+*/

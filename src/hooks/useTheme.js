@@ -24,7 +24,6 @@ async function getInitialMode() {
     }
 
     const result = await chrome.storage.local.get([THEME_KEY]);
-    console.log('getInitialMode', result);
     return result[THEME_KEY] || 'system';
 }
 
