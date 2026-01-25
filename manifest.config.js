@@ -13,6 +13,15 @@ export default defineManifest({
         'sidePanel',
         'contentSettings',
         'storage',
+        'bookmarks',
+        'favicon',
+    ],
+    web_accessible_resources: [
+        {
+            resources: ['_favicon/*'],
+            matches: ['<all_urls>'],
+            extension_ids: ['*'],
+        },
     ],
     action: {
         default_icon: {

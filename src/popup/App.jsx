@@ -18,6 +18,7 @@ export default function App() {
                 <img src={crxLogo} className="logo crx" alt="crx logo" />
             </a>
             <HelloWorld msg="Vite + React + CRXJS" />
+            <div>hello</div>
         </div>
     );
 }

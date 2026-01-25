@@ -1,6 +1,6 @@
-import { AppProvider } from '@/components';
+import { AppProvider } from '../components';
 
-import { NewTabMain } from './compnents';
+import NewTabMain from './NewTabMain';
 
 export default function App() {
     return (

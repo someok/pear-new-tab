@@ -1,1 +1,3 @@
-export { default as NewTabMain } from './NewTabMain';
+export { default as BookmarkFolder } from './BookmarkFolder';
+export { default as BookmarkItem } from './BookmarkItem';
+export { default as BookmarkWorkspace } from './BookmarkWorkspace';

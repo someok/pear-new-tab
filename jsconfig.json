@@ -35,6 +35,11 @@
             }
         ]
     },
+    "typeAcquisition": {
+        "include": [
+            "chrome"
+        ]
+    },
     "include": [
         "src"
     ],

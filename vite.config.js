@@ -22,6 +22,11 @@ export default defineConfig({
         zip({ outDir: 'release', outFileName: `crx-${name}-${version}.zip` }),
     ],
     server: {
+        port: 5173,
+        strictPort: true,
+        hmr: {
+            port: 5173,
+        },
         cors: {
             origin: [
                 /chrome-extension:\/\//,
@@ -34,5 +39,8 @@ export default defineConfig({
                 newtab: 'src/newtab/index.html',
             },
         },
+    },
+    legacy: {
+        skipWebSocketTokenCheck: true,
     },
 });
