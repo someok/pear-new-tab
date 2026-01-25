@@ -8,7 +8,7 @@ import { Flex, Typography } from 'antd';
  */
 function BookmarkFolder(props) {
     return (
-        <Flex vertical className="group h-full w-70 shrink-0">
+        <Flex vertical className="group h-full w-90 shrink-0">
             <Flex align="center" justify="space-between" className="h-12 w-full border-b-4 border-gray-200 px-2 group-hover:border-gray-500 dark:border-gray-700">
                 <Typography.Text ellipsis strong>
                     {props.title}
