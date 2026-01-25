@@ -10,8 +10,6 @@ export default defineManifest({
         48: 'public/logo.png',
     },
     permissions: [
-        'sidePanel',
-        'contentSettings',
         'storage',
         'bookmarks',
         'favicon',
@@ -28,13 +26,6 @@ export default defineManifest({
             48: 'public/logo.png',
         },
         default_popup: 'src/popup/index.html',
-    },
-    content_scripts: [{
-        js: ['src/content/main.jsx'],
-        matches: ['https://*/*'],
-    }],
-    side_panel: {
-        default_path: 'src/sidepanel/index.html',
     },
     chrome_url_overrides: {
         newtab: 'src/newtab/index.html',
