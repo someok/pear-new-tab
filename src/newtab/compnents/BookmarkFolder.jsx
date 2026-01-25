@@ -15,7 +15,7 @@ function BookmarkFolder(props) {
                 </Typography.Text>
                 <div></div>
             </Flex>
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto pt-3">
                 {props.children}
             </div>
         </Flex>
