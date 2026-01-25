@@ -42,13 +42,14 @@ function NewTabMain() {
                         <Empty />
                     </Flex>
                 )}
-                {folders.map((folder) => (
-                    <BookmarkFolder key={folder.id} {...folder}>
-                        {folder.children
-                            .filter((item) => !item.dateGroupModified)
-                            .map((item) => <BookmarkItem key={item.id} {...item} />)}
-                    </BookmarkFolder>
-                ))}
+                {folders.map((folder) => {
+                    const items = folder.children.filter((item) => !item.dateGroupModified);
+                    return (
+                        <BookmarkFolder key={folder.id} count={items.length} {...folder}>
+                            {items.map((item) => <BookmarkItem key={item.id} {...item} />)}
+                        </BookmarkFolder>
+                    );
+                })}
             </Flex>
         </Flex>
     );
