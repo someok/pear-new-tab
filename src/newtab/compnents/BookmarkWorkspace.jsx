@@ -1,9 +1,9 @@
-import { PlusOutlined } from '@ant-design/icons';
+import { CloseCircleFilled, PlusOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
 
 import { isEmpty } from 'lodash-es';
 
-import { activeWorkspace, useBookmarkStore } from '@/store/bookmarkStore';
+import { activeWorkspace, removeWorkspace, useBookmarkStore } from '@/store/bookmarkStore';
 
 import useAddFolder from '../hooks/use-add-folder';
 
@@ -18,6 +18,12 @@ function BookmarkWorkspace() {
         };
     }
 
+    function onRemoveClick(id) {
+        return async () => {
+            await removeWorkspace(id);
+        };
+    }
+
     if (isEmpty(workspaces)) {
         return null;
     }
@@ -25,14 +31,19 @@ function BookmarkWorkspace() {
     return (
         <Space>
             {workspaces.map(({ id, title }) => (
-                <Button
-                    key={id}
-                    variant="filled"
-                    color={id === activeWorkspaceId ? 'primary' : 'default'}
-                    onClick={onActiveClick(id)}
-                >
-                    {title}
-                </Button>
+                <div key={id} className="group/workspace relative">
+                    <Button
+                        variant="filled"
+                        color={id === activeWorkspaceId ? 'primary' : 'default'}
+                        onClick={onActiveClick(id)}
+                    >
+                        {title}
+                    </Button>
+                    <CloseCircleFilled
+                        className="absolute -top-1 -right-1 hidden cursor-pointer text-red-500 group-hover/workspace:block"
+                        onClick={onRemoveClick(id)}
+                    />
+                </div>
             ))}
             <Button
                 variant="filled"

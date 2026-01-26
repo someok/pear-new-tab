@@ -68,6 +68,12 @@ getInitialState().catch(noop);
 
 export const useBookmarkStore = () => useSnapshot(state);
 
+// 保存 workspaces 到 storage
+async function saveSyncWorkspaces(activeWorkspaceId) {
+    const workspaces = state.workspaces.map((workspace) => ({ ...workspace }));
+    await chrome.storage.sync.set({ [WORKSPACES_KEY]: workspaces, [ACTIVE_WORKSPACE_ID_KEY]: activeWorkspaceId });
+}
+
 export async function addWorkspace({ id, title }) {
     state.workspaces.push({ id, title });
     state.activeWorkspaceId = id;
@@ -75,8 +81,22 @@ export async function addWorkspace({ id, title }) {
     await updateBookmarks(id);
 
     // 保存 workspaces 到 storage
-    const workspaces = state.workspaces.map((workspace) => ({ ...workspace }));
-    await chrome.storage.sync.set({ [WORKSPACES_KEY]: workspaces, [ACTIVE_WORKSPACE_ID_KEY]: id });
+    await saveSyncWorkspaces(id);
+}
+
+export async function removeWorkspace(id) {
+    state.workspaces = state.workspaces.filter((w) => w.id !== id);
+    // 如果删除的是 activeWorkspaceId，则激活剩余的第一个工作区，否则为空值
+    if (state.activeWorkspaceId === id) {
+        state.activeWorkspaceId = state.workspaces[0]?.id || null;
+
+        if (state.activeWorkspaceId) {
+            await updateBookmarks(state.activeWorkspaceId);
+        } else {
+            state.bookmarks = [];
+        }
+    }
+    await saveSyncWorkspaces(state.activeWorkspaceId);
 }
 
 export async function activeWorkspace(id) {
