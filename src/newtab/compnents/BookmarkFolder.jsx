@@ -13,7 +13,7 @@ function BookmarkFolder(props) {
             <Flex
                 align="center"
                 justify="space-between"
-                className="group/folder-header h-12 w-full border-b-4 border-gray-200 px-2 group-hover/folder:border-gray-500 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-700"
+                className="group/folder-header h-12 w-full border-b-4 border-gray-200 px-2 group-hover/folder:border-gray-500 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800"
             >
                 <Flex align="flex-end" gap={8}>
                     <Typography.Text ellipsis strong className="text-base">
@@ -26,7 +26,7 @@ function BookmarkFolder(props) {
                     </Typography.Text>
                 </Flex>
 
-                <div className="hidden cursor-pointer p-1 group-hover/folder-header:block hover:bg-gray-300 active:bg-gray-400 dark:hover:bg-gray-800 dark:active:bg-gray-900">
+                <div className="hidden cursor-pointer p-1 group-hover/folder-header:block hover:bg-gray-300 active:bg-gray-400 dark:hover:bg-gray-900 dark:active:bg-gray-950">
                     <HolderOutlined />
                 </div>
             </Flex>

@@ -36,7 +36,7 @@ function BookmarkItem(props) {
         <Flex
             gap={8}
             className={classNames(
-                'group/item h-16 w-full overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800 relative after:content-[""] after:absolute after:inset-0 after:border-2 after:transition-colors after:transition-discrete after:duration-300 after:pointer-events-none',
+                'group/item h-16 w-full overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800 relative after:content-[""] after:absolute after:inset-0 after:border-3 after:transition-colors after:transition-discrete after:duration-300 after:pointer-events-none',
                 !selected && 'after:border-transparent',
                 selected && 'after:border-primary',
             )}
