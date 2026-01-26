@@ -38,7 +38,7 @@ function BookmarkItem(props) {
             className={classNames(
                 'group/item h-16 w-full overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800 relative after:content-[""] after:absolute after:inset-0 after:border-2 after:transition-colors after:transition-discrete after:duration-300 after:pointer-events-none',
                 !selected && 'after:border-transparent',
-                selected && 'after:border-blue-500',
+                selected && 'after:border-primary',
             )}
         >
             <Flex align="center" className="group/item-icon relative h-full w-8">
