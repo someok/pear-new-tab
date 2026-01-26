@@ -23,7 +23,7 @@ function BookmarkItem(props) {
     return (
         <Flex
             gap={8}
-            className="group/item h-16 w-full overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-700"
+            className="group/item h-16 w-full overflow-hidden hover:bg-gray-100 dark:hover:bg-gray-800"
         >
             <Flex align="center" className="group/item-icon relative h-full w-8">
                 <BookmarkIcon
@@ -38,12 +38,12 @@ function BookmarkItem(props) {
                     justify="center"
                     align="center"
                     vertical
-                    className="absolute top-0 right-0 bottom-0 left-0 hidden cursor-pointer bg-gray-200 group-hover/item-icon:flex dark:bg-gray-800"
+                    className="absolute top-0 right-0 bottom-0 left-0 hidden cursor-pointer bg-gray-200 group-hover/item-icon:flex dark:bg-gray-900"
                 >
-                    <Flex flex={1} justify="center" align="center" className="w-full active:bg-gray-300 dark:active:bg-gray-900">
+                    <Flex flex={1} justify="center" align="center" className="w-full active:bg-gray-300 dark:active:bg-gray-950">
                         <CheckOutlined />
                     </Flex>
-                    <Flex flex={1} justify="center" align="center" className="w-full active:bg-gray-300 dark:active:bg-gray-900">
+                    <Flex flex={1} justify="center" align="center" className="w-full active:bg-gray-300 dark:active:bg-gray-950">
                         <HolderOutlined />
                     </Flex>
                 </Flex>
