@@ -41,7 +41,7 @@ function BookmarkFolder(props) {
                     <HolderOutlined />
                 </div>
             </Flex>
-            <div className="flex-1 overflow-y-auto py-3">
+            <div className="scrollbar-thin flex-1 overflow-y-auto py-3">
                 {props.children}
             </div>
         </Flex>

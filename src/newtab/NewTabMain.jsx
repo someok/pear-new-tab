@@ -38,7 +38,7 @@ function NewTabMain() {
                 <BookmarkWorkspace />
                 <ThemeSwitch />
             </Flex>
-            <Flex gap={24} className="flex-1 overflow-hidden overflow-x-auto px-6">
+            <Flex gap={24} className="scrollbar-thin flex-1 overflow-hidden overflow-x-auto px-6">
                 {isEmpty(folders) && (
                     <Flex justify="center" align="center" className="h-full w-full">
                         <Empty />

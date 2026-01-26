@@ -44,7 +44,6 @@ body {
 
 body * {
     box-sizing: border-box;
-    scrollbar-width: thin;
 }
 /*
 
@@ -63,3 +62,18 @@ body * {
     margin-top: 2px;
 }
 */
+@utility scrollbar-hide {
+    /* For Webkit-based browsers (Chrome, Safari and Opera) */
+    &::-webkit-scrollbar {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    /* For IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+@utility scrollbar-thin {
+    scrollbar-width: thin;
+}
