@@ -15,6 +15,9 @@ function AntdProvider({ children }) {
                     algorithm: isDark ? [theme.darkAlgorithm] : [theme.defaultAlgorithm],
                     cssVar: true,
                     hashed: false,
+                    token: {
+                        borderRadius: 0,
+                    },
                 }}
             >
                 <App>
