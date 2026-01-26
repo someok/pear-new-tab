@@ -18,6 +18,8 @@ const state = proxy({
     activeWorkspaceId: null,
 
     bookmarks: [],
+
+    selectedBookmarkIds: [],
 });
 
 function log(msg, ...extra) {
@@ -102,4 +104,12 @@ export async function removeWorkspace(id) {
 export async function activeWorkspace(id) {
     state.activeWorkspaceId = id;
     await updateBookmarks(id);
+}
+
+export function toggleBookmark(id) {
+    if (state.selectedBookmarkIds.includes(id)) {
+        state.selectedBookmarkIds = state.selectedBookmarkIds.filter((i) => i !== id);
+    } else {
+        state.selectedBookmarkIds.push(id);
+    }
 }

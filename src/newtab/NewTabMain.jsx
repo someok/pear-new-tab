@@ -48,7 +48,9 @@ function NewTabMain() {
                     const items = folder.children.filter((item) => !item.dateGroupModified);
                     return (
                         <BookmarkFolder key={folder.id} count={items.length} {...folder}>
-                            {items.map((item) => <BookmarkItem key={item.id} {...item} />)}
+                            <Flex vertical gap={4}>
+                                {items.map((item) => <BookmarkItem key={item.id} {...item} />)}
+                            </Flex>
                         </BookmarkFolder>
                     );
                 })}
