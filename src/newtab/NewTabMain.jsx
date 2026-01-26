@@ -3,6 +3,7 @@ import { Button, Empty, Flex, Result } from 'antd';
 
 import { isEmpty } from 'lodash-es';
 
+import icon_svg from '@/assets/icon.svg';
 import { ThemeSwitch } from '@/components';
 import { useBookmarkStore } from '@/store/bookmarkStore';
 
@@ -21,7 +22,8 @@ function NewTabMain() {
             <Flex justify="center" align="center" className="h-screen w-screen">
                 <Result
                     status="info"
-                    title="初次使用？"
+                    icon={<img src={icon_svg} alt="LOGO" className="w-24" />}
+                    title="初次使用 Pear New Tab？"
                     subTitle={(
                         <Button type="primary" icon={<PlusOutlined />} onClick={onAddClick}>选择书签文件夹</Button>
                     )}
