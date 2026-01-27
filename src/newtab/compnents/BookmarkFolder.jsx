@@ -1,5 +1,5 @@
-import { HolderOutlined } from '@ant-design/icons';
-import { Flex } from 'antd';
+import { HolderOutlined, VerticalAlignMiddleOutlined } from '@ant-design/icons';
+import { Button, Flex } from 'antd';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -50,18 +50,26 @@ function BookmarkFolder({ id, folder, itemCount, children }) {
             >
                 <FolderTitle title={folder.title} itemCount={itemCount} />
 
-                <div
-                    {...attributes}
-                    {...listeners}
-                    className={classNames(
-                        'hidden cursor-grab p-1 group-hover/folder-header:block',
-                        'hover:bg-gray-300 active:bg-gray-400',
-                        'dark:hover:bg-gray-900 dark:active:bg-gray-950',
-                        isDragging && 'cursor-grabbing',
-                    )}
-                >
-                    <HolderOutlined />
-                </div>
+                <Flex align="center" gap={8}>
+                    <Button
+                        type="text"
+                        size="small"
+                        icon={<VerticalAlignMiddleOutlined rotate={90} />}
+                        className="hidden group-hover/folder-header:block"
+                    />
+                    <div
+                        {...attributes}
+                        {...listeners}
+                        className={classNames(
+                            'hidden cursor-grab p-1 group-hover/folder-header:block',
+                            'hover:bg-gray-300 active:bg-gray-400',
+                            'dark:hover:bg-gray-900 dark:active:bg-gray-950',
+                            isDragging && 'cursor-grabbing',
+                        )}
+                    >
+                        <HolderOutlined />
+                    </div>
+                </Flex>
             </Flex>
             <div className="scrollbar-thin flex-1 overflow-y-auto py-3">
                 {children}

@@ -86,6 +86,7 @@ async function saveSyncWorkspaces(activeWorkspaceId) {
 export async function addWorkspace({ id, title }) {
     state.workspaces.push({ id, title });
     state.activeWorkspaceId = id;
+    state.selectedBookmarkIds = [];
 
     await updateBookmarks(id);
 
