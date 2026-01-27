@@ -38,6 +38,7 @@ function NewTabMain() {
         <>
             <Flex vertical className="h-screen w-screen overflow-hidden">
                 <Flex align="center" justify="space-between" className="h-12 px-6">
+                    <img alt="logo" src={icon_svg} className="w-5" />
                     <BookmarkWorkspace />
                     <ThemeSwitch />
                 </Flex>
