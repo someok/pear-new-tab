@@ -3,6 +3,8 @@
 Pear New Tab 是一款 Chrome 新标签页扩展，让你可以将浏览器书签文件夹转化为直观的工作区视图，快速访问常用网站。
 用更直观的方式使用你的常用书签。
 
+- 安装地址：[Chrome Extension](https://chromewebstore.google.com/detail/pear-new-tab/pjcilmegpjahjfmencjmhipjkcpaoklp)
+
 ## 功能列表
 
 1. [x] 工作区管理
