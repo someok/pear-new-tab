@@ -111,7 +111,7 @@ function BookmarkContent({ folders }) {
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
         >
-            <Flex gap={24} className="scrollbar-thin relative flex-1 overflow-hidden overflow-x-auto px-6">
+            <Flex gap={24} className="scrollbar-thin relative overflow-x-auto overflow-y-hidden px-6">
                 <SortableContext
                     items={columnFolderIds}
                     strategy={horizontalListSortingStrategy}
