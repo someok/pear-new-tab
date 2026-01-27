@@ -14,7 +14,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
     return (
         <Flex
             justify="center"
-            className="fixed bottom-20 z-10 w-full"
+            className="pointer-events-none fixed bottom-20 z-10 w-full"
         >
             {/* 拖动时全屏显示这个 div，以防止拖动的时候影响到其它的 dnd context */}
             {isDragging && (
@@ -25,7 +25,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                 align="center"
                 gap={8}
                 className={classNames(
-                    'relative h-10 bg-zinc-200 p-2 dark:bg-zinc-700',
+                    'relative h-10 bg-zinc-200 p-2 dark:bg-zinc-700 pointer-events-auto',
                     isDragging ? 'shadow-xl/20' : 'shadow-xl',
                 )}
                 style={{ ...style, top, left }}
