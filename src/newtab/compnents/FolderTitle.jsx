@@ -19,7 +19,7 @@ function FolderTitle({ title, itemCount }) {
                     {string}
                 </Typography.Text>
                 <div className={classNames(
-                    'rounded-full px-2 text-xs cursor-pointer',
+                    'rounded-xs px-1 text-xs cursor-pointer',
                     'bg-gray-100 hover:bg-gray-300',
                     'dark:bg-gray-800 dark:hover:bg-gray-950',
                 )}
