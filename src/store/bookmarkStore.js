@@ -110,6 +110,7 @@ export async function removeWorkspace(id) {
 
 export async function activeWorkspace(id) {
     state.activeWorkspaceId = id;
+    state.selectedBookmarkIds = [];
     await updateBookmarks(id);
 }
 

@@ -41,7 +41,7 @@ function NewTabMain() {
                     <BookmarkWorkspace />
                     <ThemeSwitch />
                 </Flex>
-                <Flex className="h-full w-full">
+                <Flex flex={1} className="h-full w-full overflow-hidden">
                     {isEmpty(folders) && (
                         <Flex justify="center" align="center" className="h-full w-full">
                             <Empty />
