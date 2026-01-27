@@ -33,7 +33,7 @@ if (isDev) {
 
 async function loadWorkspaceBookmarks(workspaceId) {
     const result = await chrome.bookmarks.getSubTree(workspaceId);
-    console.log('result', result);
+    log('load workspace bookmarks', result);
 
     state.bookmarks = result?.[0]?.children ?? [];
 }
