@@ -7,8 +7,9 @@ import icon_svg from '@/assets/icon.svg';
 import { ThemeSwitch } from '@/components';
 import { useBookmarkStore } from '@/store/bookmarkStore';
 
+import BookmarkContent from './compnents/BookmarkContent';
 import useAddFolder from './hooks/use-add-folder';
-import { BookmarkFolder, BookmarkItem, BookmarkWorkspace } from './compnents';
+import { BookmarkWorkspace } from './compnents';
 
 function NewTabMain() {
     const { workspaces, bookmarks } = useBookmarkStore();
@@ -38,22 +39,13 @@ function NewTabMain() {
                 <BookmarkWorkspace />
                 <ThemeSwitch />
             </Flex>
-            <Flex gap={24} className="scrollbar-thin flex-1 overflow-hidden overflow-x-auto px-6">
+            <Flex className="h-full w-full">
                 {isEmpty(folders) && (
                     <Flex justify="center" align="center" className="h-full w-full">
                         <Empty />
                     </Flex>
                 )}
-                {folders.map((folder) => {
-                    const items = folder.children.filter((item) => !item.dateGroupModified);
-                    return (
-                        <BookmarkFolder key={folder.id} count={items.length} {...folder}>
-                            <Flex vertical gap={4}>
-                                {items.map((item) => <BookmarkItem key={item.id} {...item} />)}
-                            </Flex>
-                        </BookmarkFolder>
-                    );
-                })}
+                <BookmarkContent folders={folders} />
             </Flex>
         </Flex>
     );
