@@ -75,7 +75,7 @@ function BookmarkItem({ item }) {
                         flex={1}
                         justify="center"
                         align="center"
-                        className="w-full active:bg-gray-300 dark:active:bg-gray-950"
+                        className="w-full cursor-grab active:bg-gray-300 dark:active:bg-gray-950"
                     >
                         <HolderOutlined />
                     </Flex>

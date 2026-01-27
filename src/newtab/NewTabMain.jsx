@@ -8,6 +8,7 @@ import { ThemeSwitch } from '@/components';
 import { useBookmarkStore } from '@/store/bookmarkStore';
 
 import BookmarkContent from './compnents/BookmarkContent';
+import BookmarkSelectBar from './compnents/BookmarkSelectBar';
 import useAddFolder from './hooks/use-add-folder';
 import { BookmarkWorkspace } from './compnents';
 
@@ -34,20 +35,23 @@ function NewTabMain() {
     }
 
     return (
-        <Flex vertical className="h-screen w-screen overflow-hidden">
-            <Flex align="center" justify="space-between" className="h-12 px-6">
-                <BookmarkWorkspace />
-                <ThemeSwitch />
+        <>
+            <Flex vertical className="h-screen w-screen overflow-hidden">
+                <Flex align="center" justify="space-between" className="h-12 px-6">
+                    <BookmarkWorkspace />
+                    <ThemeSwitch />
+                </Flex>
+                <Flex className="h-full w-full">
+                    {isEmpty(folders) && (
+                        <Flex justify="center" align="center" className="h-full w-full">
+                            <Empty />
+                        </Flex>
+                    )}
+                    <BookmarkContent folders={folders} />
+                </Flex>
             </Flex>
-            <Flex className="h-full w-full">
-                {isEmpty(folders) && (
-                    <Flex justify="center" align="center" className="h-full w-full">
-                        <Empty />
-                    </Flex>
-                )}
-                <BookmarkContent folders={folders} />
-            </Flex>
-        </Flex>
+            <BookmarkSelectBar />
+        </>
     );
 }
 

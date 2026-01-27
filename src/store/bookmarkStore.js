@@ -121,6 +121,10 @@ export function toggleBookmark(id) {
     }
 }
 
+export function clearSelectedBookmarkIds() {
+    state.selectedBookmarkIds = [];
+}
+
 export function updateFolders(newFolders) {
     state.bookmarks = newFolders;
 }
