@@ -25,7 +25,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                 align="center"
                 gap={8}
                 className={classNames(
-                    'relative h-10 bg-gray-200 p-2 dark:bg-gray-700',
+                    'relative h-10 bg-zinc-200 p-2 dark:bg-zinc-700',
                     isDragging ? 'shadow-xl/20' : 'shadow-xl',
                 )}
                 style={{ ...style, top, left }}
@@ -33,7 +33,8 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
             >
                 <div
                     className={classNames(
-                        'active:bg-gray-300 dark:active:bg-gray-950',
+                        'hover:bg-zinc-300 active:bg-zinc-400',
+                        'dark:hover:bg-zinc-900 dark:active:bg-zinc-950',
                         isDragging ? 'cursor-grabbing' : 'cursor-grab',
                     )}
                     {...listeners}
