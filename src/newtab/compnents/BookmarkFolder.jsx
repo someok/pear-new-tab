@@ -1,9 +1,11 @@
 import { HolderOutlined } from '@ant-design/icons';
-import { Flex, Typography } from 'antd';
+import { Flex } from 'antd';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import classNames from 'classnames';
+
+import FolderTitle from './FolderTitle';
 
 /**
  * 顶级文件夹
@@ -41,21 +43,12 @@ function BookmarkFolder({ id, folder, itemCount, children }) {
                 align="center"
                 justify="space-between"
                 className={classNames(
-                    'group/folder-header h-12 w-full border-b-4 px-2',
+                    'group/folder-header h-14 w-full border-b-4 px-2',
                     'border-gray-200 dark:border-gray-800 group-hover/folder:border-gray-500',
                     'hover:bg-gray-100 dark:hover:bg-gray-800',
                 )}
             >
-                <Flex align="flex-end" gap={8}>
-                    <Typography.Text ellipsis strong className="text-base">
-                        {folder.title}
-                    </Typography.Text>
-                    <Typography.Text type="secondary">
-                        (
-                        {itemCount}
-                        )
-                    </Typography.Text>
-                </Flex>
+                <FolderTitle title={folder.title} itemCount={itemCount} />
 
                 <div
                     {...attributes}
