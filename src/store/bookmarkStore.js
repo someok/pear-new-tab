@@ -31,10 +31,16 @@ if (isDev) {
     subscribe(state, () => log('state has changed to', state));
 }
 
+async function loadWorkspaceBookmarks(workspaceId) {
+    const result = await chrome.bookmarks.getSubTree(workspaceId);
+    console.log('result', result);
+
+    state.bookmarks = result?.[0]?.children ?? [];
+}
+
 async function updateBookmarks(parentId) {
     try {
-        const result = await chrome.bookmarks.getSubTree(parentId);
-        state.bookmarks = result?.[0]?.children ?? [];
+        await loadWorkspaceBookmarks(parentId);
         await chrome.storage.sync.set({ [ACTIVE_WORKSPACE_ID_KEY]: parentId });
         return [true, null];
     } catch (err) {
@@ -113,4 +119,30 @@ export function toggleBookmark(id) {
     } else {
         state.selectedBookmarkIds.push(id);
     }
+}
+
+export function updateFolders(newFolders) {
+    state.bookmarks = newFolders;
+}
+
+/**
+ * 在同一个文件夹中移动书签
+ *
+ * @param id 书签 ID
+ * @param srcIndex 源索引
+ * @param destIndex 目标索引
+ * @return {Promise<void>}
+ */
+export async function moveBookmarkAtSameFolder(id, srcIndex, destIndex) {
+    // 如果是在同一个文件夹内移动，且是向后移（Index变大）
+    // 实际上需要插入到目标位置的下一个锚点之前
+    let finalIndex = destIndex;
+    if (srcIndex < destIndex) {
+        finalIndex += 1;
+    }
+
+    await chrome.bookmarks.move(id, { index: finalIndex });
+    // console.log('moveBookmark', node, destIndex);
+
+    await loadWorkspaceBookmarks(state.activeWorkspaceId);
 }
