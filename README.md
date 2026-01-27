@@ -27,34 +27,34 @@ Pear New Tab 是一款 Chrome 新标签页扩展，让你可以将浏览器书�
 
 ## Technology Stack
 
-- 前端框架: React 19 + Vite 7 + node 24 + pnpm 10 + CRXJS
-- UI 组件: Ant Design 6
-- 样式方案: Tailwind CSS 4
-- 状态管理: Valtio
-- 拖拽功能: dnd-kit
-- 扩展规范: Chrome Manifest V3
+- **前端框架**: React 19 + Vite 7 + node 24 + pnpm 10 + CRXJS
+- **UI 组件**: Ant Design 6
+- **样式方案**: Tailwind CSS 4
+- **状态管理**: Valtio
+- **拖拽功能**: dnd-kit
+- **扩展规范**: Chrome Manifest V3
 
 ## Quick Start
 
 1. Install dependencies:
 
-```bash
-pnpm install
-```
+    ```bash
+    pnpm install
+    ```
 
 2. Start development server:
 
-```bash
-pnpm run dev
-```
+    ```bash
+    pnpm run dev
+    ```
 
 3. Open Chrome and navigate to `chrome://extensions/`, enable "Developer mode", and load the unpacked extension from the `dist` directory.
 
 4. Build for production:
 
-```bash
-npm run build
-```
+    ```bash
+    pnpm run build
+    ```
 
 ## Project Structure
 
@@ -74,3 +74,4 @@ npm run build
 - The CRXJS plugin automatically handles manifest generation
 - Content scripts should be placed in `src/content/`
 - Popup UI should be placed in `src/popup/`
+- Newtab UI should be placed in `src/newtab/`
