@@ -6,10 +6,13 @@ import classNames from 'classnames';
 /**
  * 顶级文件夹
  *
- * @param {import('./bookmarkTypes').BookmarkFolder & {count: number, children: React.ReactNode}} props - props
+ * @param {object} props - props
+ * @param {import('@/types/bookmarkTypes').BookmarkFolder} props.folder - 文件夹
+ * @param {number} props.itemCount - 该目录下的书签数量
+ * @param {React.ReactNode} props.children - 子元素
  * @return {React.ReactNode}
  */
-function BookmarkFolder(props) {
+function BookmarkFolder({ folder, itemCount, children }) {
     return (
         <Flex vertical className="group/folder h-full w-90 shrink-0">
             <Flex
@@ -23,17 +26,17 @@ function BookmarkFolder(props) {
             >
                 <Flex align="flex-end" gap={8}>
                     <Typography.Text ellipsis strong className="text-base">
-                        {props.title}
+                        {folder.title}
                     </Typography.Text>
                     <Typography.Text type="secondary">
                         (
-                        {props.count}
+                        {itemCount}
                         )
                     </Typography.Text>
                 </Flex>
 
                 <div className={classNames(
-                    'hidden cursor-pointer p-1 group-hover/folder-header:block',
+                    'hidden cursor-grab p-1 group-hover/folder-header:block',
                     'hover:bg-gray-300 active:bg-gray-400',
                     'dark:hover:bg-gray-900 dark:active:bg-gray-950',
                 )}
@@ -42,7 +45,7 @@ function BookmarkFolder(props) {
                 </div>
             </Flex>
             <div className="scrollbar-thin flex-1 overflow-y-auto py-3">
-                {props.children}
+                {children}
             </div>
         </Flex>
     );

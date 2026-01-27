@@ -6,7 +6,7 @@ interface BaseBookmarkItem {
     dateAdded?: number;
 }
 
-export type Bookmark = BaseBookmarkItem & {
+export type BookmarkItem = BaseBookmarkItem & {
     url?: string;
 };
 
@@ -15,3 +15,8 @@ export type BookmarkFolder = BaseBookmarkItem & {
     dateGroupModified?: number;
     children?: BaseBookmarkItem[];
 };
+
+export interface WorkspaceItem {
+    id: string;
+    title: string;
+}

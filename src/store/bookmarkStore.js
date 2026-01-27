@@ -7,8 +7,8 @@ const WORKSPACES_KEY = 'app-workspaces';
 const ACTIVE_WORKSPACE_ID_KEY = 'app-workspaces-active-id';
 
 /**
- *
- * @typedef {import('./bookmarkStoreTypes').WorkspaceItem} WorkspaceItem
+ * @typedef {import('@/types/bookmarkTypes').WorkspaceItem} WorkspaceItem
+ * @typedef {import('@/types/bookmarkTypes').BookmarkFolder} BookmarkFolder
  */
 
 const state = proxy({
@@ -17,6 +17,7 @@ const state = proxy({
 
     activeWorkspaceId: null,
 
+    /** @type BookmarkFolder[] */
     bookmarks: [],
 
     selectedBookmarkIds: [],

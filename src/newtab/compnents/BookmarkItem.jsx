@@ -17,20 +17,21 @@ function faviconURL(pageUrl, size = 32) {
 /**
  * 书签条目
  *
- * @param {import('./bookmarkTypes').Bookmark} props - props
+ * @param {object} props - props
+ * @param {import('@/types/bookmarkTypes').BookmarkItem} props.item - props
  * @return {React.ReactNode}
  */
-function BookmarkItem(props) {
+function BookmarkItem({ item }) {
     const { selectedBookmarkIds } = useBookmarkStore();
 
     // 去除 url 的协议部分
-    const url = props?.url?.replace(/https?:\/\//, '');
+    const url = item?.url?.replace(/https?:\/\//, '');
 
     function onCheckClick() {
-        toggleBookmark(props.id);
+        toggleBookmark(item.id);
     }
 
-    const selected = selectedBookmarkIds?.includes(props.id);
+    const selected = selectedBookmarkIds?.includes(item.id);
 
     return (
         <Flex
@@ -45,7 +46,7 @@ function BookmarkItem(props) {
         >
             <Flex align="center" className="group/item-icon relative h-full w-8">
                 <BookmarkIcon
-                    src={faviconURL(props.url)}
+                    src={faviconURL(item.url)}
                     fallback={(
                         <Flex justify="center" align="center" className="h-full w-full">
                             <PictureOutlined className="text-xl text-gray-500" />
@@ -80,9 +81,9 @@ function BookmarkItem(props) {
                     </Flex>
                 </Flex>
             </Flex>
-            <a href={props.url} className="flex flex-1 overflow-auto py-2 text-current">
+            <a href={item.url} className="flex flex-1 overflow-auto py-2 text-current">
                 <Flex vertical justify="center" gap={4} className="w-full">
-                    <Typography.Text strong ellipsis>{props.title}</Typography.Text>
+                    <Typography.Text strong ellipsis>{item.title}</Typography.Text>
                     <Typography.Text type="secondary" ellipsis className="text-xs">{url}</Typography.Text>
                 </Flex>
             </a>
