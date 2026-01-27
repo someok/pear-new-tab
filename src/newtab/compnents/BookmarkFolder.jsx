@@ -50,18 +50,17 @@ function BookmarkFolder({ id, folder, itemCount, children }) {
             >
                 <FolderTitle title={folder.title} itemCount={itemCount} />
 
-                <Flex align="center" gap={8}>
+                <Flex align="center" gap={8} className="hidden group-hover/folder-header:flex">
                     <Button
                         type="text"
                         size="small"
                         icon={<VerticalAlignMiddleOutlined rotate={90} />}
-                        className="hidden group-hover/folder-header:block"
                     />
                     <div
                         {...attributes}
                         {...listeners}
                         className={classNames(
-                            'hidden cursor-grab p-1 group-hover/folder-header:block',
+                            'cursor-grab p-1',
                             'hover:bg-gray-300 active:bg-gray-400',
                             'dark:hover:bg-gray-900 dark:active:bg-gray-950',
                             isDragging && 'cursor-grabbing',
