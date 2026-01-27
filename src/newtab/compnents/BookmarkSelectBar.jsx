@@ -1,32 +1,45 @@
-import { ClearOutlined, DeleteOutlined, DragOutlined } from '@ant-design/icons';
-import { Button, Divider, Flex } from 'antd';
+import { useState } from 'react';
 
+import { DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { isEmpty } from 'lodash-es';
 
-import { clearSelectedBookmarkIds, useBookmarkStore } from '@/store/bookmarkStore';
+import { useBookmarkStore } from '@/store/bookmarkStore';
+
+import BookmarkSelectBarInner from './BookmarkSelectBarInner';
+
+const defaultCoordinates = {
+    x: 0,
+    y: 0,
+};
 
 function BookmarkSelectBar() {
     const { selectedBookmarkIds } = useBookmarkStore();
+
+    const [{ x, y }, setCoordinates] = useState(defaultCoordinates);
+    const sensors = useSensors(
+        useSensor(MouseSensor),
+        useSensor(TouchSensor),
+        useSensor(KeyboardSensor),
+    );
 
     if (isEmpty(selectedBookmarkIds)) {
         return null;
     }
 
     return (
-        <Flex justify="center" className="fixed bottom-20 w-full">
-            <Flex align="center" gap={8} className="bg-gray-200 p-2 shadow-lg dark:bg-gray-800">
-                <Button variant="filled" color="danger" size="small" icon={<ClearOutlined />} onClick={clearSelectedBookmarkIds}>
-                    清除
-                    {' '}
-                    {selectedBookmarkIds.length}
-                    {' '}
-                    个选择
-                </Button>
-                <Divider orientation="vertical" />
-                <Button size="small" variant="filled" color="default" icon={<DeleteOutlined />}>删除</Button>
-                <Button size="small" variant="filled" color="default" icon={<DragOutlined />}>移动</Button>
-            </Flex>
-        </Flex>
+        <DndContext
+            sensors={sensors}
+            onDragEnd={({ delta }) => {
+                setCoordinates(({ x, y }) => {
+                    return {
+                        x: x + delta.x,
+                        y: y + delta.y,
+                    };
+                });
+            }}
+        >
+            <BookmarkSelectBarInner selectedBookmarkIds={selectedBookmarkIds} top={y} left={x} />
+        </DndContext>
     );
 }
 
