@@ -31,8 +31,8 @@ if (isDev) {
     subscribe(state, () => log('state has changed to', state));
 }
 
-async function loadWorkspaceBookmarks(workspaceId) {
-    const result = await chrome.bookmarks.getSubTree(workspaceId);
+export async function loadWorkspaceBookmarks(workspaceId) {
+    const result = await chrome.bookmarks.getSubTree(workspaceId || state.activeWorkspaceId);
     log('load workspace bookmarks', result);
 
     state.bookmarks = result?.[0]?.children ?? [];

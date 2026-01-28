@@ -3,6 +3,7 @@
 
 /**
  * 打开一组 URL 并将其放入同一个标签组
+ *
  * @param {string[]} urls 要打开的链接数组
  * @param {string=} title 标签组的名称
  * @param {chrome.tabGroups.Color=} color 标签组颜色 (可选)
@@ -59,4 +60,31 @@ export async function openTabsInGroup(
             console.error('Chrome Runtime Error:', chrome.runtime.lastError.message);
         }
     }
-};
+}
+
+/**
+ * 批量删除书签
+ *
+ * @param {string[]} ids
+ * @return {Promise<{successIds: string[], failedIds: string[]}>} 返回成功删除的 ID 列表和失败的 ID 列表
+ */
+export async function batchDeleteBookmarks(ids) {
+    if (!ids || ids.length === 0)
+        return { successIds: [], failedIds: [] };
+
+    const results = await Promise.all(ids.map(async (id) => {
+        try {
+            await chrome.bookmarks.remove(id);
+            return { id, status: 'success' };
+        } catch (error) {
+            console.error(`删除书签 ${id} 失败:`, error);
+            return { id, status: 'error', error };
+        }
+    }));
+
+    // 统计结果
+    const successIds = results.filter((r) => r.status === 'success').map((r) => r.id);
+    const failedIds = results.filter((r) => r.status === 'error').map((r) => r.id);
+
+    return { successIds, failedIds };
+}

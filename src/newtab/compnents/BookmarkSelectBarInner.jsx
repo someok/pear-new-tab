@@ -1,14 +1,21 @@
 import { ClearOutlined, DeleteOutlined, HolderOutlined } from '@ant-design/icons';
-import { Button, Divider, Flex } from 'antd';
+import { Button, Divider, Flex, Popconfirm } from 'antd';
 
 import { useDraggable } from '@dnd-kit/core';
 import classNames from 'classnames';
 
-import { clearSelectedBookmarkIds } from '@/store/bookmarkStore';
+import { clearSelectedBookmarkIds, loadWorkspaceBookmarks } from '@/store/bookmarkStore';
+import { batchDeleteBookmarks } from '@/utils/chromeUtils';
 
 function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
     const { attributes, isDragging, listeners, setNodeRef, transform }
         = useDraggable({ id: 'draggable' });
+
+    async function onDeleteClick() {
+        await batchDeleteBookmarks(selectedBookmarkIds);
+        clearSelectedBookmarkIds();
+        await loadWorkspaceBookmarks();
+    }
 
     const style = { transform: `translate3d(${transform ? transform.x : 0}px, ${transform ? transform.y : 0}px, 0) scale(${isDragging ? 1.03 : 1})` };
     return (
@@ -41,7 +48,13 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                 >
                     <HolderOutlined />
                 </div>
-                <Button variant="text" color="default" size="small" icon={<ClearOutlined />} onClick={clearSelectedBookmarkIds}>
+                <Button
+                    variant="text"
+                    color="default"
+                    size="small"
+                    icon={<ClearOutlined />}
+                    onClick={clearSelectedBookmarkIds}
+                >
                     清除
                     {' '}
                     {selectedBookmarkIds.length}
@@ -49,7 +62,22 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                     个选择
                 </Button>
                 <Divider orientation="vertical" />
-                <Button size="small" variant="filled" color="danger" icon={<DeleteOutlined />}>删除</Button>
+                <Popconfirm
+                    title="提醒"
+                    description={`确定删除 ${selectedBookmarkIds.length} 个书签？`}
+                    okButtonProps={{ danger: true }}
+                    onConfirm={onDeleteClick}
+                >
+
+                    <Button
+                        size="small"
+                        variant="filled"
+                        color="danger"
+                        icon={<DeleteOutlined />}
+                    >
+                        删除
+                    </Button>
+                </Popconfirm>
             </Flex>
         </Flex>
     );
