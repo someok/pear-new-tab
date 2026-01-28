@@ -15,6 +15,8 @@ export default defineManifest({
         'storage',
         'bookmarks',
         'favicon',
+        'tabs',
+        'tabGroups',
     ],
     web_accessible_resources: [
         {

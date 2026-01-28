@@ -1,5 +1,5 @@
-import { HolderOutlined, VerticalAlignMiddleOutlined } from '@ant-design/icons';
-import { Button, Flex } from 'antd';
+import { HolderOutlined } from '@ant-design/icons';
+import { Flex } from 'antd';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -13,11 +13,11 @@ import FolderTitle from './FolderTitle';
  * @param {object} props - props
  * @param {string} props.id - 文件夹ID
  * @param {import('@/types/bookmarkTypes').BookmarkFolder} props.folder - 文件夹
- * @param {number} props.itemCount - 该目录下的书签数量
+ * @param {string[]} props.urls - 该目录下的书签数量
  * @param {React.ReactNode} props.children - 子元素
  * @return {React.ReactNode}
  */
-function BookmarkFolder({ id, folder, itemCount, children }) {
+function BookmarkFolder({ id, folder, urls, children }) {
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
     // console.log('isDragging', isDragging);
 
@@ -48,7 +48,7 @@ function BookmarkFolder({ id, folder, itemCount, children }) {
                     'hover:bg-gray-100 dark:hover:bg-gray-800',
                 )}
             >
-                <FolderTitle title={folder.title} itemCount={itemCount} />
+                <FolderTitle title={folder.title} urls={urls} />
 
                 <Flex align="center" gap={8} className="hidden group-hover/folder-header:flex">
                     {/* <Button

@@ -304,6 +304,7 @@ function BookmarkContent({ folders }) {
                     {folders.map((folder) => {
                         /** @type {BookmarkNode[]} */
                         const items = getFolderItems(folder);
+                        const urls = items.map((item) => item.url);
 
                         const sortableItems = items.map((item) => getUniqueId(folder.id, item.id));
 
@@ -312,7 +313,7 @@ function BookmarkContent({ folders }) {
                                 key={folder.id}
                                 id={folder.id}
                                 folder={folder}
-                                itemCount={items.length}
+                                urls={urls}
                             >
                                 <Flex vertical gap={4} className="min-h-full">
                                     {items.length === 0 ? (
