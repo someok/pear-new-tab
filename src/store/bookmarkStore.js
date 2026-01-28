@@ -160,3 +160,36 @@ export async function moveBookmarkAtSameFolder(id, srcIndex, destIndex) {
 
     await loadWorkspaceBookmarks(state.activeWorkspaceId);
 }
+
+/**
+ * 移动书签到其它文件夹
+ *
+ * @param {string} id 书签 ID
+ * @param {string} destFolderId 目标文件夹 ID
+ * @param {number} destIndex 目标位置索引
+ * @return {Promise<void>}
+ */
+export async function moveBookmarkToFolder(id, destFolderId, destIndex) {
+    await chrome.bookmarks.move(id, { parentId: destFolderId, index: destIndex });
+    await loadWorkspaceBookmarks(state.activeWorkspaceId);
+}
+
+/**
+ * 批量移动已选中的书签到目标文件夹
+ *
+ * @param {string[]} bookmarkIds 书签 ID 列表
+ * @param {string} destFolderId 目标文件夹 ID
+ * @param {number} destIndex 目标位置索引
+ * @return {Promise<void>}
+ */
+export async function moveSelectedBookmarksToFolder(bookmarkIds, destFolderId, destIndex) {
+    // 逐个移动书签，每次移动后 index 递增以保持顺序
+    for (let i = 0; i < bookmarkIds.length; i++) {
+        await chrome.bookmarks.move(bookmarkIds[i], {
+            parentId: destFolderId,
+            index: destIndex + i,
+        });
+    }
+    state.selectedBookmarkIds = [];
+    await loadWorkspaceBookmarks(state.activeWorkspaceId);
+}
