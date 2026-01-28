@@ -22,9 +22,9 @@ function SortableWorkspaceItem({ id, title }) {
             align="center"
             style={style}
             className={classNames(
-                'px-3  h-8 select-none',
+                'px-3 h-8 select-none',
                 'hover:bg-cyan-500 hover:text-white',
-                isDragging ? 'bg-cyan-500' : 'cursor-grab bg-cyan-200',
+                isDragging ? 'bg-cyan-500' : 'cursor-grab bg-cyan-200 dark:bg-cyan-800',
             )}
             {...attributes}
             {...listeners}

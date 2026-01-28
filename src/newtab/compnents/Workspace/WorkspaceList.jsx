@@ -24,7 +24,7 @@ function WorkspaceList({ workspaces, activeWorkspaceId }) {
             {workspaces.map(({ id, title }) => (
                 <div key={id} className="group/workspace relative">
                     <Button
-                        variant="filled"
+                        variant="text"
                         color={id === activeWorkspaceId ? 'primary' : 'default'}
                         onClick={onActiveClick(id)}
                     >
@@ -38,7 +38,7 @@ function WorkspaceList({ workspaces, activeWorkspaceId }) {
             ))}
             <Tooltip title="选择书签目录">
                 <Button
-                    variant="filled"
+                    variant="text"
                     color="default"
                     icon={<PlusOutlined />}
                     onClick={onAddClick}
