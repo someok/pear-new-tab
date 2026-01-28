@@ -6,7 +6,7 @@ interface BaseBookmarkItem {
     dateAdded?: number;
 }
 
-export type BookmarkItem = BaseBookmarkItem & {
+export type BookmarkNode = BaseBookmarkItem & {
     url?: string;
 };
 

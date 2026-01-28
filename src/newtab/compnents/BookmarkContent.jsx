@@ -5,6 +5,7 @@ import { Flex } from 'antd';
 import {
     closestCenter,
     DndContext,
+    DragOverlay,
     KeyboardSensor,
     MouseSensor,
     TouchSensor,
@@ -17,10 +18,12 @@ import { moveBookmarkAtSameFolder, updateFolders } from '@/store/bookmarkStore';
 
 import BookmarkFolder from './BookmarkFolder';
 import BookmarkItem from './BookmarkItem';
+import BookmarkItemDragOverlay from './BookmarkItemDragOverlay';
+import { getFolderItems, getUniqueId } from './utils';
 
 /**
  * @typedef {import('@/types/bookmarkTypes').BookmarkFolder} BookmarkFolder
- * @typedef {import('@/types/bookmarkTypes').BookmarkItem} BookmarkItem
+ * @typedef {import('@/types/bookmarkTypes').BookmarkNode} BookmarkNode
  */
 
 /**
@@ -34,7 +37,7 @@ function BookmarkContent({ folders }) {
     const columnFolderIds = folders.map((folder) => folder.id);
 
     // 拖拽状态
-    // const [activeId, setActiveId] = useState(null);
+    const [activeId, setActiveId] = useState(null);
     const [activeDragType, setActiveDragType] = useState(/** @type { 'FOLDER' | 'ITEM' | null } */ (null));
 
     function findFolder(id) {
@@ -47,10 +50,11 @@ function BookmarkContent({ folders }) {
     function handleDragStart(event) {
         // console.log('handleDragStart', event);
         const { active } = event;
-        /** @type {string} */
-        // const id = active.id;
+        const id = active.id;
 
-        if (columnFolderIds.includes(active.id)) {
+        setActiveId(id);
+
+        if (columnFolderIds.includes(id)) {
             setActiveDragType('FOLDER');
         } else {
             setActiveDragType('ITEM');
@@ -97,6 +101,11 @@ function BookmarkContent({ folders }) {
         }
     }
 
+    function handleDragCancel() {
+        setActiveId(null);
+        setActiveDragType(null);
+    }
+
     const sensors = useSensors(
         useSensor(MouseSensor),
         useSensor(TouchSensor),
@@ -110,6 +119,7 @@ function BookmarkContent({ folders }) {
             onDragStart={handleDragStart}
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
+            onDragCancel={handleDragCancel}
         >
             <Flex gap={24} className="scrollbar-thin relative overflow-x-auto overflow-y-hidden px-6">
                 <SortableContext
@@ -117,9 +127,10 @@ function BookmarkContent({ folders }) {
                     strategy={horizontalListSortingStrategy}
                 >
                     {folders.map((folder) => {
-                        /** @type {BookmarkItem[]} */
-                        const items = folder.children
-                            .filter((item) => !item.dateGroupModified);
+                        /** @type {BookmarkNode[]} */
+                        const items = getFolderItems(folder);
+
+                        const sortableItems = items.map((item) => getUniqueId(folder.id, item.id));
 
                         return (
                             <BookmarkFolder
@@ -129,18 +140,38 @@ function BookmarkContent({ folders }) {
                                 itemCount={items.length}
                             >
                                 <Flex vertical gap={4}>
-                                    {items.map((item) => (
-                                        <BookmarkItem
-                                            key={item.id}
-                                            item={item}
-                                        />
-                                    ))}
+                                    <SortableContext
+                                        key={folder.id}
+                                        items={sortableItems}
+                                    >
+                                        {items.map((item) => {
+                                            const uniqueId = getUniqueId(folder.id, item.id);
+                                            return (
+                                                <BookmarkItem
+                                                    key={uniqueId}
+                                                    uniqueId={uniqueId}
+                                                    item={item}
+                                                />
+                                            );
+                                        })}
+                                    </SortableContext>
                                 </Flex>
                             </BookmarkFolder>
                         );
                     })}
                 </SortableContext>
             </Flex>
+
+            {activeDragType === 'ITEM' && (
+
+                <DragOverlay>
+                    <BookmarkItemDragOverlay
+                        activeId={activeId}
+                        activeDragType={activeDragType}
+                        folders={folders}
+                    />
+                </DragOverlay>
+            )}
         </DndContext>
     );
 }

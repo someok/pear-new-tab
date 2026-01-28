@@ -48,7 +48,7 @@ function BookmarkFolder({ id, folder, itemCount, children }) {
                     'hover:bg-gray-100 dark:hover:bg-gray-800',
                 )}
             >
-                <FolderTitle title={folder.title} itemCount={itemCount} />
+                <FolderTitle title={`${folder.id} ${folder.title}`} itemCount={itemCount} />
 
                 <Flex align="center" gap={8} className="hidden group-hover/folder-header:flex">
                     <Button

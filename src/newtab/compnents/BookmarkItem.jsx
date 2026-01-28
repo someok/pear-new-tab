@@ -1,6 +1,8 @@
 import { CheckOutlined, HolderOutlined, PictureOutlined } from '@ant-design/icons';
 import { Flex, Typography } from 'antd';
 
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import classNames from 'classnames';
 
 import { toggleBookmark, useBookmarkStore } from '@/store/bookmarkStore';
@@ -18,11 +20,25 @@ function faviconURL(pageUrl, size = 32) {
  * 书签条目
  *
  * @param {object} props - props
+ * @param {string} props.uniqueId - 格式：folderId-bookmarkId
+ * @param {boolean=} props.overlay - 是否为拖拽 overlay
  * @param {import('@/types/bookmarkTypes').BookmarkItem} props.item - props
  * @return {React.ReactNode}
  */
-function BookmarkItem({ item }) {
+function BookmarkItem({ uniqueId, overlay = false, item }) {
     const { selectedBookmarkIds } = useBookmarkStore();
+
+    const { attributes, listeners, setNodeRef, transform, transition, isDragging }
+        = useSortable({ id: uniqueId });
+    // console.log('attributes, transform, transition, isDragging', attributes, transform, transition, isDragging);
+    // console.log('BookmarkItem render', uniqueId, isDragging, overlay);
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        // zIndex: isDragging ? 10 : 0,
+        opacity: isDragging && !overlay ? 0.5 : 1,
+    };
 
     // 去除 url 的协议部分
     const url = item?.url?.replace(/https?:\/\//, '');
@@ -35,6 +51,7 @@ function BookmarkItem({ item }) {
 
     return (
         <Flex
+            ref={setNodeRef}
             gap={8}
             className={classNames(
                 'group/item h-16 w-full overflow-hidden relative',
@@ -43,6 +60,7 @@ function BookmarkItem({ item }) {
                 !selected && 'after:border-transparent',
                 selected && 'after:border-primary',
             )}
+            style={style}
         >
             <Flex align="center" className="group/item-icon relative h-full w-8">
                 <BookmarkIcon
@@ -76,6 +94,8 @@ function BookmarkItem({ item }) {
                         justify="center"
                         align="center"
                         className="w-full cursor-grab active:bg-gray-300 dark:active:bg-gray-950"
+                        {...listeners}
+                        {...attributes}
                     >
                         <HolderOutlined />
                     </Flex>
@@ -83,7 +103,7 @@ function BookmarkItem({ item }) {
             </Flex>
             <a href={item.url} className="flex flex-1 overflow-auto py-2 text-current">
                 <Flex vertical justify="center" gap={4} className="w-full">
-                    <Typography.Text strong ellipsis>{item.title}</Typography.Text>
+                    <Typography.Text strong ellipsis>{`${item.id}:${item.title}`}</Typography.Text>
                     <Typography.Text type="secondary" ellipsis className="text-xs">{url}</Typography.Text>
                 </Flex>
             </a>
