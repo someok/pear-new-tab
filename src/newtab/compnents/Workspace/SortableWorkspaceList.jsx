@@ -13,7 +13,7 @@ import {
     useSensor,
     useSensors,
 } from '@dnd-kit/core';
-import { snapCenterToCursor } from '@dnd-kit/modifiers';
+import { restrictToWindowEdges, snapCenterToCursor } from '@dnd-kit/modifiers';
 import { arrayMove, horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable';
 import classNames from 'classnames';
 
@@ -110,7 +110,7 @@ function SortableWorkspaceList({ workspaces }) {
             <DndContext
                 sensors={sensors}
                 collisionDetection={closestCenter}
-                modifiers={[snapCenterToCursor]}
+                modifiers={[snapCenterToCursor, restrictToWindowEdges]}
                 onDragStart={handleDragStart}
                 onDragOver={handleDragOver}
                 onDragEnd={handleDragEnd}
