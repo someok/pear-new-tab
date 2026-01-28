@@ -15,7 +15,7 @@ function BookmarkIcon({ src, fallback }) {
             onError={() => setError(true)}
             classNames={{
                 root: 'h-full w-full flex items-center justify-center',
-                image: 'w-auto',
+                image: 'w-6 h-6',
             }}
         />
     );
