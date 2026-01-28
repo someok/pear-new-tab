@@ -25,7 +25,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
         >
             {/* 拖动时全屏显示这个 div，以防止拖动的时候影响到其它的 dnd context */}
             {isDragging && (
-                <div className="fixed top-0 right-0 bottom-0 left-0" />
+                <div className="pointer-events-auto fixed top-0 right-0 bottom-0 left-0" />
             )}
             <Flex
                 ref={setNodeRef}
