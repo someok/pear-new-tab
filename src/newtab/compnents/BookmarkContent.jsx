@@ -316,7 +316,7 @@ function BookmarkContent({ folders }) {
                                 urls={urls}
                             >
                                 <Flex vertical gap={4} className="min-h-full">
-                                    {items.length === 0 ? (
+                                    {activeDragType === 'ITEM' && items.length === 0 ? (
                                         <EmptyFolderDropZone folderId={folder.id} />
                                     ) : (
                                         <>
