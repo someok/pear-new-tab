@@ -22,7 +22,7 @@ function faviconURL(pageUrl, size = 32) {
  * @param {object} props - props
  * @param {string} props.uniqueId - 格式：folderId-bookmarkId
  * @param {boolean=} props.overlay - 是否为拖拽 overlay
- * @param {import('@/types/bookmarkTypes').BookmarkItem} props.item - props
+ * @param {import('@/types/bookmarkTypes').BookmarkNode} props.item - props
  * @return {React.ReactNode}
  */
 function BookmarkItem({ uniqueId, overlay = false, item }) {

@@ -1,4 +1,4 @@
-import { ClearOutlined, DeleteOutlined, DragOutlined, HolderOutlined } from '@ant-design/icons';
+import { ClearOutlined, DeleteOutlined, HolderOutlined } from '@ant-design/icons';
 import { Button, Divider, Flex } from 'antd';
 
 import { useDraggable } from '@dnd-kit/core';
