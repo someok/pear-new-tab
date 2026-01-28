@@ -41,7 +41,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                 >
                     <HolderOutlined />
                 </div>
-                <Button variant="filled" color="danger" size="small" icon={<ClearOutlined />} onClick={clearSelectedBookmarkIds}>
+                <Button variant="text" color="default" size="small" icon={<ClearOutlined />} onClick={clearSelectedBookmarkIds}>
                     清除
                     {' '}
                     {selectedBookmarkIds.length}
@@ -49,8 +49,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                     个选择
                 </Button>
                 <Divider orientation="vertical" />
-                <Button size="small" variant="filled" color="default" icon={<DeleteOutlined />}>删除</Button>
-                <Button size="small" variant="filled" color="default" icon={<DragOutlined />}>移动</Button>
+                <Button size="small" variant="filled" color="danger" icon={<DeleteOutlined />}>删除</Button>
             </Flex>
         </Flex>
     );
