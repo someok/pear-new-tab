@@ -7,10 +7,8 @@ import icon_svg from '@/assets/icon.svg';
 import { ThemeSwitch } from '@/components';
 import { useBookmarkStore } from '@/store/bookmarkStore';
 
-import BookmarkContent from './compnents/BookmarkContent';
-import BookmarkSelectBar from './compnents/BookmarkSelectBar';
 import useAddFolder from './hooks/use-add-folder';
-import { BookmarkWorkspace } from './compnents';
+import { BookmarkContent, BookmarkSelectBar, Workspace } from './compnents';
 
 function NewTabMain() {
     const { workspaces, bookmarks } = useBookmarkStore();
@@ -39,7 +37,7 @@ function NewTabMain() {
             <Flex vertical className="h-screen w-screen overflow-hidden">
                 <Flex align="center" justify="space-between" className="h-12 px-6">
                     <img alt="logo" src={icon_svg} className="w-5" />
-                    <BookmarkWorkspace />
+                    <Workspace />
                     <ThemeSwitch />
                 </Flex>
                 <Flex flex={1} justify="center" className="h-full w-full overflow-hidden">

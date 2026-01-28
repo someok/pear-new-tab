@@ -109,6 +109,14 @@ export async function removeWorkspace(id) {
     await saveSyncWorkspaces(state.activeWorkspaceId);
 }
 
+export function updateSortedWorkspaces(newWorkspaces) {
+    state.workspaces = newWorkspaces;
+}
+
+export async function saveNewWorkspaces(newWorkspaces) {
+    await chrome.storage.sync.set({ [WORKSPACES_KEY]: newWorkspaces });
+}
+
 export async function activeWorkspace(id) {
     state.activeWorkspaceId = id;
     state.selectedBookmarkIds = [];

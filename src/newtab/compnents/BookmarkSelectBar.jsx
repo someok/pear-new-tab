@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 import { isEmpty } from 'lodash-es';
 
 import { useBookmarkStore } from '@/store/bookmarkStore';
@@ -29,6 +30,7 @@ function BookmarkSelectBar() {
     return (
         <DndContext
             sensors={sensors}
+            modifiers={[restrictToWindowEdges]}
             onDragEnd={({ delta }) => {
                 setCoordinates(({ x, y }) => {
                     return {
