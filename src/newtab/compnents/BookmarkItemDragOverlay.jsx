@@ -17,16 +17,16 @@ function MergedCardOverlay({ count }) {
             <Flex
                 align="center"
                 justify="center"
-                className="relative h-16 w-64 bg-white shadow-lg dark:bg-gray-800"
+                className="relative h-16 w-64 bg-white shadow-lg dark:bg-gray-700"
                 style={{ borderRadius: 8 }}
             >
                 {/* 堆叠效果 - 底层卡片 */}
                 <div
-                    className="absolute -top-1 left-1 h-full w-full rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900"
+                    className="absolute -top-2 left-2 h-full w-full rounded-lg border border-gray-100 bg-gray-200 dark:border-gray-700 dark:bg-gray-900"
                     style={{ zIndex: -2 }}
                 />
                 <div
-                    className="dark:bg-gray-850 absolute -top-0.5 left-0.5 h-full w-full rounded-lg border border-gray-200 bg-gray-100 dark:border-gray-600"
+                    className="dark:bg-gray-850 absolute -top-1 left-1 h-full w-full rounded-lg border border-gray-50 bg-gray-100 dark:border-gray-600 dark:bg-gray-800"
                     style={{ zIndex: -1 }}
                 />
                 <Typography.Text strong>

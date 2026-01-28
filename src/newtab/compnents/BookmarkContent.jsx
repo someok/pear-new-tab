@@ -314,7 +314,7 @@ function BookmarkContent({ folders }) {
                                 folder={folder}
                                 itemCount={items.length}
                             >
-                                <Flex vertical gap={4} className="h-full">
+                                <Flex vertical gap={4} className="min-h-full">
                                     {items.length === 0 ? (
                                         <EmptyFolderDropZone folderId={folder.id} />
                                     ) : (

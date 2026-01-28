@@ -114,7 +114,7 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                 </Flex>
                 <a href={item.url} className="flex flex-1 overflow-auto py-2 text-current">
                     <Flex vertical justify="center" gap={4} className="w-full">
-                        <Typography.Text strong ellipsis>{`${item.id}:${item.title}`}</Typography.Text>
+                        <Typography.Text strong ellipsis>{item.title}</Typography.Text>
                         <Typography.Text type="secondary" ellipsis className="text-xs">{url}</Typography.Text>
                     </Flex>
                 </a>

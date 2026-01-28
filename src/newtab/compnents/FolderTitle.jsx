@@ -12,14 +12,14 @@ function FolderTitle({ title, itemCount }) {
     }, [title]);
 
     return (
-        <Flex align="center">
+        <Flex align="center" flex={1} className="overflow-hidden">
             {emoji && <div className="pr-4 pl-2 text-center text-3xl">{emoji}</div>}
-            <Flex vertical>
+            <Flex vertical flex={1} className="overflow-hidden">
                 <Typography.Text ellipsis strong className="pl-1 text-lg">
                     {string}
                 </Typography.Text>
                 <div className={classNames(
-                    'rounded-xs px-1 text-xs cursor-pointer',
+                    'rounded-xs px-1 text-xs w-fit cursor-pointer',
                     'bg-gray-100 hover:bg-gray-300',
                     'dark:bg-gray-800 dark:hover:bg-gray-950',
                 )}
