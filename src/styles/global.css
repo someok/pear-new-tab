@@ -6,36 +6,10 @@
 /*@import "tailwindcss/preflight.css" layer(base);*/
 @import 'tailwindcss/utilities.css' layer(utilities);
 
+@import './colors.css';
+
 /* 告诉 Tailwind v4：如果 html 标签上有 .dark 类，就是暗黑模式 */
 @custom-variant dark (&:where(.dark, .dark *));
-
-/*noinspection ALL*/
-@theme {
-    /* --spacing 默认值为 0.25rem，约为 4px */
-    /* Ant Design 默认字体配置 */
-    --default-font-family: var(--ant-font-family);
-    --color-primary: var(--ant-color-primary);
-    --color-success: var(--ant-color-success);
-    --color-warning: var(--ant-color-warning);
-    --color-error: var(--ant-color-error);
-    --color-info: var(--ant-color-info);
-
-    /*--color-demo: light-dark(red, blue);*/
-}
-
-/**
- * 为保证 tailwindcss 能获取 antd 的 css 变量，可以使用下面模式设置全局样式
- * 以便解决类似 Error: --ant-color-primary is not defined 的问题
- */
-/*noinspection ALL*/
-* {
-    --default-font-family: var(--ant-font-family);
-    --color-primary: var(--ant-color-primary);
-    --color-success: var(--ant-color-success);
-    --color-warning: var(--ant-color-warning);
-    --color-error: var(--ant-color-error);
-    --color-info: var(--ant-color-info);
-}
 
 body {
     margin: 0;

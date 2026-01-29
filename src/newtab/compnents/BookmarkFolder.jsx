@@ -36,7 +36,7 @@ function BookmarkFolder({ id, folder, urls, children }) {
             vertical
             className={classNames(
                 'group/folder h-full w-90 shrink-0',
-                isDragging && 'bg-gray-100 dark:bg-gray-800',
+                isDragging && 'bg-muted',
             )}
         >
             <Flex
@@ -44,8 +44,8 @@ function BookmarkFolder({ id, folder, urls, children }) {
                 justify="space-between"
                 className={classNames(
                     'group/folder-header h-14 w-full border-b-4 px-2',
-                    'border-gray-200 dark:border-gray-800 group-hover/folder:border-gray-500',
-                    'hover:bg-gray-100 dark:hover:bg-gray-800',
+                    'border-subtle-border group-hover/folder:border-strong-border',
+                    'hover:bg-hover',
                 )}
             >
                 <FolderTitle title={folder.title} urls={urls} />
@@ -61,8 +61,7 @@ function BookmarkFolder({ id, folder, urls, children }) {
                         {...listeners}
                         className={classNames(
                             'cursor-grab p-1',
-                            'hover:bg-gray-300 active:bg-gray-400',
-                            'dark:hover:bg-gray-900 dark:active:bg-gray-950',
+                            'hover:bg-component-hover active:bg-component-active',
                             isDragging && 'cursor-grabbing',
                         )}
                     >

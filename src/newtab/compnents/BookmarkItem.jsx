@@ -29,8 +29,9 @@ function faviconURL(pageUrl, size = 32) {
 function BookmarkItem({ uniqueId, overlay = false, item }) {
     const { selectedBookmarkIds } = useBookmarkStore();
 
-    const { attributes, listeners, setNodeRef, transform, transition, isDragging, isOver }
-        = useSortable({ id: uniqueId });
+    const { attributes, listeners, setNodeRef, transform, transition, isDragging, isOver } = useSortable({
+        id: uniqueId,
+    });
     // console.log('attributes, transform, transition, isDragging', attributes, transform, transition, isDragging);
     // console.log('BookmarkItem render', uniqueId, isDragging, overlay);
 
@@ -66,10 +67,10 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                 gap={8}
                 className={classNames(
                     'group/item h-16 w-full overflow-hidden relative',
-                    'hover:bg-gray-100 dark:hover:bg-gray-800',
+                    'hover:bg-hover',
                     'after:content-[""] after:absolute after:inset-0 after:border-3 after:transition-colors after:transition-discrete after:duration-300 after:pointer-events-none',
                     !selected && 'after:border-transparent',
-                    selected && 'after:border-primary',
+                    selected && 'after:border-accent-border',
                 )}
                 style={style}
             >
@@ -78,7 +79,7 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                         src={faviconURL(item.url)}
                         fallback={(
                             <Flex justify="center" align="center" className="h-full w-full">
-                                <PictureOutlined className="text-xl text-gray-500" />
+                                <PictureOutlined className="text-tertiary text-xl" />
                             </Flex>
                         )}
                     />
@@ -88,14 +89,14 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                         vertical
                         className={classNames(
                             'absolute top-0 right-0 bottom-0 left-0 hidden cursor-pointer group-hover/item-icon:flex',
-                            'bg-gray-200 dark:bg-gray-900',
+                            'bg-component',
                         )}
                     >
                         <Flex
                             flex={1}
                             justify="center"
                             align="center"
-                            className="w-full active:bg-gray-300 dark:active:bg-gray-950"
+                            className="active:bg-component-hover w-full"
                             onClick={onCheckClick}
                         >
                             <CheckOutlined />
@@ -104,7 +105,7 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                             flex={1}
                             justify="center"
                             align="center"
-                            className="w-full cursor-grab active:bg-gray-300 dark:active:bg-gray-950"
+                            className="w-full cursor-grab active:bg-[var(--color-bg-component-hover)]"
                             {...listeners}
                             {...attributes}
                         >
@@ -114,8 +115,12 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                 </Flex>
                 <a href={item.url} className="flex flex-1 overflow-auto py-2 text-current">
                     <Flex vertical justify="center" gap={4} className="w-full">
-                        <Typography.Text strong ellipsis>{item.title}</Typography.Text>
-                        <Typography.Text type="secondary" ellipsis className="text-xs">{url}</Typography.Text>
+                        <Typography.Text strong ellipsis>
+                            {item.title}
+                        </Typography.Text>
+                        <Typography.Text type="secondary" ellipsis className="text-xs">
+                            {url}
+                        </Typography.Text>
                     </Flex>
                 </a>
             </Flex>

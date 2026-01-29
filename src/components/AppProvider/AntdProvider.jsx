@@ -13,7 +13,9 @@ function AntdProvider({ children }) {
                 locale={zhCN}
                 theme={{
                     algorithm: isDark ? [theme.darkAlgorithm] : [theme.defaultAlgorithm],
-                    cssVar: true,
+                    cssVar: {
+                        key: 'antd-theme',
+                    },
                     hashed: false,
                     token: {
                         borderRadius: 0,

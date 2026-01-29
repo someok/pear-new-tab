@@ -4,7 +4,7 @@ import pkg from './package.json';
 
 export default defineManifest({
     manifest_version: 3,
-    name: pkg.name,
+    name: pkg.productName,
     version: pkg.version,
     icons: {
         16: 'public/icon-16.png',
