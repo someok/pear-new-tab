@@ -1,5 +1,6 @@
 @layer base {
     :root {
+        /* https://ethanschoonover.com/solarized/ */
         --solarized-base03: #002b36;
         --solarized-base02: #073642;
         --solarized-base01: #586e75;
@@ -18,7 +19,6 @@
         --solarized-green: #859900;
 
         --color-canvas: transparent;
-        /*--color-canvas: var(--color-slate-50);*/
         --color-base: oklch(0 0 0 / 0.88);
 
         --color-primary: oklch(0.6 0.22 259.04);
