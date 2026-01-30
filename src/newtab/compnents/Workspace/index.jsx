@@ -30,6 +30,7 @@ function Workspace() {
                         color={draggable ? 'primary' : 'default'}
                         icon={<SwapOutlined />}
                         className="z-30"
+                        classNames={draggable ? { root: 'bg-primary' } : {}}
                         onClick={() => setDraggable(!draggable)}
                     />
                 </Tooltip>

@@ -26,6 +26,7 @@ function WorkspaceList({ workspaces, activeWorkspaceId }) {
                     <Button
                         variant="text"
                         color={id === activeWorkspaceId ? 'primary' : 'default'}
+                        classNames={id === activeWorkspaceId ? { content: 'text-primary' } : {}}
                         onClick={onActiveClick(id)}
                     >
                         {title}

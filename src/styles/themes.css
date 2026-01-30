@@ -58,7 +58,7 @@
 
         --color-state-hover: var(--color-slate-800);
         --color-state-active: var(--color-slate-600);
-        --color-state-mute: var(--color-slate-900);
+        --color-state-mute: var(--color-slate-700);
 
         --color-folder-divider: var(--color-slate-700);
         --color-folder-divider-hover: var(--color-slate-500);
