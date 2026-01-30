@@ -116,12 +116,10 @@ function SortableWorkspaceList({ workspaces }) {
                 onDragEnd={handleDragEnd}
             >
                 <Space className="relative z-30">
-                    <Typography.Text type="secondary">
-                        <Space size="small">
-                            <DragOutlined />
-                            拖动排序
-                        </Space>
-                    </Typography.Text>
+                    <Space size="small" className="text-secondary">
+                        <DragOutlined />
+                        拖动排序
+                    </Space>
                     <SortableContext items={ids} strategy={horizontalListSortingStrategy}>
                         <Space>
                             {workspaces.map(({ id, title }) => (

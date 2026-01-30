@@ -30,8 +30,8 @@ function FolderTitle({ title, urls }) {
                     <div
                         className={classNames(
                             'rounded-xs px-1 text-xs w-fit',
-                            'bg-component',
-                            enableOpen && 'cursor-pointer hover:bg-component-hover',
+                            'bg-folder-site',
+                            enableOpen && 'cursor-pointer hover:bg-folder-site-hover',
                             !enableOpen && 'cursor-not-allowed',
                         )}
                         onClick={onOpenClick}

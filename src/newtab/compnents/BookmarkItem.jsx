@@ -1,5 +1,5 @@
 import { CheckOutlined, HolderOutlined, PictureOutlined } from '@ant-design/icons';
-import { Flex, Typography } from 'antd';
+import { Flex } from 'antd';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -67,10 +67,10 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                 gap={8}
                 className={classNames(
                     'group/item h-16 w-full overflow-hidden relative',
-                    'hover:bg-hover',
+                    'hover:bg-state-hover active:bg-state-active',
                     'after:content-[""] after:absolute after:inset-0 after:border-3 after:transition-colors after:transition-discrete after:duration-300 after:pointer-events-none',
                     !selected && 'after:border-transparent',
-                    selected && 'after:border-accent-border',
+                    selected && 'after:border-primary',
                 )}
                 style={style}
             >
@@ -79,7 +79,7 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                         src={faviconURL(item.url)}
                         fallback={(
                             <Flex justify="center" align="center" className="h-full w-full">
-                                <PictureOutlined className="text-tertiary text-xl" />
+                                <PictureOutlined className="text-secondary text-xl" />
                             </Flex>
                         )}
                     />
@@ -89,14 +89,14 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                         vertical
                         className={classNames(
                             'absolute top-0 right-0 bottom-0 left-0 hidden cursor-pointer group-hover/item-icon:flex',
-                            'bg-component',
+                            'bg-holder-hover',
                         )}
                     >
                         <Flex
                             flex={1}
                             justify="center"
                             align="center"
-                            className="active:bg-component-hover w-full"
+                            className="active:bg-holder-active w-full"
                             onClick={onCheckClick}
                         >
                             <CheckOutlined />
@@ -105,7 +105,10 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                             flex={1}
                             justify="center"
                             align="center"
-                            className="w-full cursor-grab active:bg-[var(--color-bg-component-hover)]"
+                            className={classNames(
+                                'w-full cursor-grab',
+                                isDragging && 'cursor-grabbing bg-holder-active',
+                            )}
                             {...listeners}
                             {...attributes}
                         >
@@ -115,12 +118,8 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                 </Flex>
                 <a href={item.url} className="flex flex-1 overflow-auto py-2 text-current">
                     <Flex vertical justify="center" gap={4} className="w-full">
-                        <Typography.Text strong ellipsis>
-                            {item.title}
-                        </Typography.Text>
-                        <Typography.Text type="secondary" ellipsis className="text-xs">
-                            {url}
-                        </Typography.Text>
+                        <div className="truncate font-bold">{item.title}</div>
+                        <div className="text-secondary truncate text-xs font-bold">{url}</div>
                     </Flex>
                 </a>
             </Flex>

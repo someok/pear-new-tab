@@ -1,4 +1,4 @@
-import { Flex, Typography } from 'antd';
+import { Flex } from 'antd';
 
 import { useDndContext, useDroppable } from '@dnd-kit/core';
 import classNames from 'classnames';
@@ -39,9 +39,9 @@ function EmptyFolderDropZone({ folderId }) {
                     : 'border-gray-300 dark:border-gray-600',
             )}
         >
-            <Typography.Text type="secondary">
+            <div className="text-secondary text-center">
                 {isOver ? '松开以放置书签' : '拖拽书签到此处'}
-            </Typography.Text>
+            </div>
         </Flex>
     );
 }

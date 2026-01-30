@@ -31,7 +31,7 @@ function WorkspaceList({ workspaces, activeWorkspaceId }) {
                         {title}
                     </Button>
                     <CloseCircleFilled
-                        className="absolute -top-1 -right-1 hidden cursor-pointer text-red-500 group-hover/workspace:block"
+                        className="text-error absolute -top-1 -right-1 hidden cursor-pointer group-hover/workspace:block"
                         onClick={onRemoveClick(id)}
                     />
                 </div>

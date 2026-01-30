@@ -32,7 +32,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
                 align="center"
                 gap={8}
                 className={classNames(
-                    'relative h-10 bg-component p-2 pointer-events-auto',
+                    'relative h-10 bg-state-hover p-2 pointer-events-auto',
                     isDragging ? 'shadow-xl/20' : 'shadow-xl',
                 )}
                 style={{ ...style, top, left }}
@@ -40,7 +40,7 @@ function BookmarkSelectBarInner({ selectedBookmarkIds, top, left }) {
             >
                 <div
                     className={classNames(
-                        'hover:bg-component-hover active:bg-component-active',
+                        'hover:bg-holder-hover active:bg-holder-active',
                         isDragging ? 'cursor-grabbing' : 'cursor-grab',
                     )}
                     {...listeners}

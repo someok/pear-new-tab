@@ -6,7 +6,7 @@
 /*@import "tailwindcss/preflight.css" layer(base);*/
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@import './colors.css';
+@import './themes.css';
 
 /* 告诉 Tailwind v4：如果 html 标签上有 .dark 类，就是暗黑模式 */
 @custom-variant dark (&:where(.dark, .dark *));

@@ -71,6 +71,9 @@ function syncTheme() {
     const root = document.documentElement;
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
+    // 在 html 上添加一些通用的 class
+    root.classList.add('antialiased', 'bg-canvas', 'text-base');
+
     // 计算当前是否应该是黑夜
     let nextIsDark;
     if (state.mode === 'system') {
