@@ -1,6 +1,7 @@
 @layer base {
     :root {
-        --color-canvas: var(--color-slate-50);
+        --color-canvas: transparent;
+        /*--color-canvas: var(--color-slate-50);*/
         --color-base: oklch(0 0 0 / 0.88);
 
         --color-primary: oklch(0.6 0.22 259.04);
@@ -25,7 +26,8 @@
     }
 
     .dark {
-        --color-canvas: var(--color-slate-950);
+        --color-canvas: transparent;
+        /*--color-canvas: var(--color-slate-950);*/
         --color-base: oklch(1 0 0 / 0.85);
 
         --color-primary: oklch(0.6 0.22 259.04);
@@ -65,10 +67,6 @@
     --default-font-family: var(
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
     );
-    /*--color-success: var(--ant-color-success, #52c41a);*/
-    /*--color-warning: var(--ant-color-warning, #faad14);*/
-    /*--color-error: var(--ant-color-error, #ff4d4f);*/
-    /*--color-info: var(--ant-color-info, #1677ff);*/
 
     /* 基础色 */
     --color-canvas: var(--color-canvas);
