@@ -1,5 +1,22 @@
 @layer base {
     :root {
+        --solarized-base03: #002b36;
+        --solarized-base02: #073642;
+        --solarized-base01: #586e75;
+        --solarized-base00: #657b83;
+        --solarized-base0: #839496;
+        --solarized-base1: #93a1a1;
+        --solarized-base2: #eee8d5;
+        --solarized-base3: #fdf6e3;
+        --solarized-yellow: #b58900;
+        --solarized-orange: #cb4b16;
+        --solarized-red: #dc322f;
+        --solarized-magenta: #d33682;
+        --solarized-violet: #6c71c4;
+        --solarized-blue: #268bd2;
+        --solarized-cyan: #2aa198;
+        --solarized-green: #859900;
+
         --color-canvas: transparent;
         /*--color-canvas: var(--color-slate-50);*/
         --color-base: oklch(0 0 0 / 0.88);
@@ -27,7 +44,6 @@
 
     .dark {
         --color-canvas: transparent;
-        /*--color-canvas: var(--color-slate-950);*/
         --color-base: oklch(1 0 0 / 0.85);
 
         --color-primary: oklch(0.6 0.22 259.04);
@@ -49,6 +65,56 @@
 
         --color-folder-site: var(--color-slate-800);
         --color-folder-site-hover: var(--color-slate-900);
+    }
+
+    [data-theme='solarized'] {
+        --color-canvas: var(--solarized-base3);
+        --color-base: var(--solarized-base0);
+
+        --color-primary: var(--solarized-blue);
+        --color-secondary: var(--solarized-base1);
+        --color-error: var(--solarized-red);
+
+        --color-accent: var(--color-cyan-800);
+        --color-accent-hover: var(--color-cyan-500);
+
+        --color-holder-hover: var(--solarized-base3);
+        --color-holder-active: var(--solarized-base1);
+
+        --color-state-hover: var(--solarized-base2);
+        --color-state-active: var(--solarized-base3);
+        --color-state-mute: var(--solarized-base2);
+
+        --color-folder-divider: var(--solarized-base1);
+        --color-folder-divider-hover: var(--solarized-base02);
+
+        --color-folder-site: var(--solarized-base2);
+        --color-folder-site-hover: var(--solarized-base3);
+    }
+
+    .dark[data-theme='solarized'] {
+        --color-canvas: var(--solarized-base03);
+        --color-base: var(--solarized-base0);
+
+        --color-primary: var(--solarized-blue);
+        --color-secondary: var(--solarized-base01);
+        --color-error: var(--solarized-red);
+
+        --color-accent: var(--color-cyan-800);
+        --color-accent-hover: var(--color-cyan-500);
+
+        --color-holder-hover: var(--solarized-base3);
+        --color-holder-active: var(--solarized-base1);
+
+        --color-state-hover: var(--solarized-base02);
+        --color-state-active: var(--solarized-base03);
+        --color-state-mute: var(--solarized-base02);
+
+        --color-folder-divider: var(--solarized-base01);
+        --color-folder-divider-hover: var(--solarized-base1);
+
+        --color-folder-site: var(--solarized-base02);
+        --color-folder-site-hover: var(--solarized-base03);
     }
 
     /* 在 Antd 的作用域内重新绑定变量 */
