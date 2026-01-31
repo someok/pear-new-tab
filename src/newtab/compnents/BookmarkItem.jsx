@@ -1,10 +1,11 @@
-import { CheckOutlined, HolderOutlined, PictureOutlined } from '@ant-design/icons';
+import { CheckOutlined, EditOutlined, HolderOutlined, PictureOutlined } from '@ant-design/icons';
 import { Flex } from 'antd';
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import classNames from 'classnames';
 
+import { showBookmarkFormModal } from '@/components';
 import { toggleBookmark, useBookmarkStore } from '@/store/bookmarkStore';
 
 import BookmarkIcon from './BookmarkIcon';
@@ -49,13 +50,18 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
         toggleBookmark(item.id);
     }
 
+    async function onEditClick(e) {
+        e.stopPropagation();
+        await showBookmarkFormModal({ item });
+    }
+
     const selected = selectedBookmarkIds?.includes(item.id);
 
     // 拖拽时不显示指示器（overlay 模式）
     const showDropIndicator = isOver && !overlay && !isDragging;
 
     return (
-        <div className="relative">
+        <div className="group/item-container relative">
             {/* 拖拽放置位置指示器 - 高亮横线 */}
             {showDropIndicator && (
                 <div className="absolute top-0 right-0 left-0 z-10 flex items-center">
@@ -66,7 +72,7 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                 ref={setNodeRef}
                 gap={8}
                 className={classNames(
-                    'group/item h-16 w-full overflow-hidden relative',
+                    'group/item h-16 w-full relative z-0',
                     'hover:bg-state-hover active:bg-state-active',
                     'after:content-[""] after:absolute after:inset-0 after:border-3 after:transition-colors after:transition-discrete after:duration-300 after:pointer-events-none',
                     !selected && 'after:border-transparent',
@@ -116,12 +122,25 @@ function BookmarkItem({ uniqueId, overlay = false, item }) {
                         </Flex>
                     </Flex>
                 </Flex>
-                <a href={item.url} className="flex flex-1 overflow-auto py-2 text-current">
+                <a href={item.url} className="z-1 flex flex-1 overflow-auto py-2 text-current">
                     <Flex vertical justify="center" gap={4} className="w-full">
                         <div className="truncate font-bold">{item.title}</div>
                         <div className="text-secondary truncate text-xs font-bold">{url}</div>
                     </Flex>
                 </a>
+                <Flex
+                    align="flex-end"
+                    className="pointer-events-none absolute top-0 right-0 z-10 hidden h-full pr-0.75 pb-0.75 group-hover/item:flex"
+                >
+                    <Flex
+                        justify="center"
+                        align="center"
+                        className="active:bg-holder-active hover:bg-holder-hover pointer-events-auto h-6 w-6 cursor-pointer text-current/50"
+                        onClick={onEditClick}
+                    >
+                        <EditOutlined />
+                    </Flex>
+                </Flex>
             </Flex>
         </div>
     );
