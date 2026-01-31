@@ -26,7 +26,6 @@
         --color-error: var(--color-red-500);
 
         --color-accent: var(--color-cyan-300);
-        --color-accent-hover: var(--color-cyan-500);
 
         --color-holder-hover: var(--color-slate-300);
         --color-holder-active: var(--color-slate-400);
@@ -51,7 +50,6 @@
         --color-error: var(--color-red-500);
 
         --color-accent: var(--color-cyan-800);
-        --color-accent-hover: var(--color-cyan-500);
 
         --color-holder-hover: var(--color-slate-900);
         --color-holder-active: var(--color-slate-950);
@@ -75,8 +73,7 @@
         --color-secondary: var(--solarized-base1);
         --color-error: var(--solarized-red);
 
-        --color-accent: var(--color-cyan-800);
-        --color-accent-hover: var(--color-cyan-500);
+        --color-accent: var(--solarized-base03);
 
         --color-holder-hover: var(--solarized-base3);
         --color-holder-active: var(--solarized-base1);
@@ -100,8 +97,7 @@
         --color-secondary: var(--solarized-base01);
         --color-error: var(--solarized-red);
 
-        --color-accent: var(--color-cyan-800);
-        --color-accent-hover: var(--color-cyan-500);
+        --color-accent: var(--solarized-base2);
 
         --color-holder-hover: var(--solarized-base3);
         --color-holder-active: var(--solarized-base1);

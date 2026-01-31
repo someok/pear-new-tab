@@ -12,7 +12,7 @@ function SortableWorkspaceItem({ id, title }) {
         transform: CSS.Transform.toString(transform),
         transition,
         zIndex: isDragging ? 1 : 0,
-        opacity: isDragging ? 0.5 : 1,
+        opacity: isDragging ? 0.8 : 1,
     };
 
     return (
@@ -22,9 +22,8 @@ function SortableWorkspaceItem({ id, title }) {
             align="center"
             style={style}
             className={classNames(
-                'px-3 h-8 select-none',
-                'hover:bg-accent-hover hover:text-inverse',
-                isDragging ? 'bg-accent-hover' : 'cursor-grab bg-accent',
+                'px-3 h-8 select-none hover:bg-accent/80',
+                isDragging ? 'bg-accent/80' : 'cursor-grab bg-accent',
             )}
             {...attributes}
             {...listeners}

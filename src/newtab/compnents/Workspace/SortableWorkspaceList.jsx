@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { DragOutlined } from '@ant-design/icons';
-import { Flex, Space, Typography } from 'antd';
+import { Flex, Space } from 'antd';
 
 import {
     closestCenter,
@@ -88,8 +88,8 @@ function SortableWorkspaceList({ workspaces }) {
                 justify="center"
                 align="center"
                 className={classNames(
-                    'px-3  h-8 select-none  hover:text-white',
-                    'cursor-grabbing bg-cyan-500',
+                    'px-3 h-8 select-none  hover:text-white',
+                    'cursor-grabbing bg-accent',
                 )}
             >
                 {title}

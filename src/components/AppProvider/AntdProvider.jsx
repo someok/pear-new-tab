@@ -21,9 +21,6 @@ function AntdProvider({ children }) {
                         borderRadius: 0,
                     },
                 }}
-                tooltip={{
-                    unique: true,
-                }}
             >
                 <App>
                     {children}
