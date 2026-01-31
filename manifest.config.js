@@ -31,7 +31,7 @@ export default defineManifest({
             48: 'public/icon-48.png',
             128: 'public/icon-128.png',
         },
-        default_popup: 'src/popup/index.html',
+        // default_popup: 'src/popup/index.html',
     },
     chrome_url_overrides: {
         newtab: 'src/newtab/index.html',
