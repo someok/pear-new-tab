@@ -16,10 +16,6 @@
         "prepare": "husky",
         "preinstall": "npx only-allow pnpm"
     },
-    "volta": {
-        "node": "24.12.0",
-        "pnpm": "10.26.2"
-    },
     "dependencies": {
         "@ant-design/cssinjs": "2.0.3",
         "@ant-design/icons": "6.1.0",
