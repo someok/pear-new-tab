@@ -6,6 +6,7 @@ export default defineManifest({
     manifest_version: 3,
     name: pkg.productName,
     version: pkg.version,
+    description: pkg.description,
     icons: {
         16: 'public/icon-16.png',
         48: 'public/icon-48.png',

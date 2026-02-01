@@ -2,8 +2,9 @@
     "name": "pear-new-tab",
     "productName": "Pear New Tab",
     "type": "module",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "private": true,
+    "description": "将浏览器书签文件夹转化为 newtab 上的工作区视图，快速访问常用网站。",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
